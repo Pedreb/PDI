@@ -127,8 +127,22 @@ th {{ background-color: #eee; }}
     <p><strong>Soma das Notas do Liderado:</strong> {nota_final_liderado}</p>
     """
 
-    html += "</body></html>"
-    return html
+    html += "</table>"
+
+# Cálculo da nota final
+nota_final_liderado = sum(auto)
+nota_final_gestor = sum(gestor)
+nota_final = round((nota_final_liderado + nota_final_gestor) / 2, 2)
+
+html += f"""
+<br><h3>Resultado Consolidado</h3>
+<p><strong>Nota Final do Avaliado:</strong> {nota_final}</p>
+<p><strong>Soma das Notas do Gestor:</strong> {nota_final_gestor}</p>
+<p><strong>Soma das Notas do Liderado:</strong> {nota_final_liderado}</p>
+"""
+
+html += "</body></html>"
+return html
 
 aba = st.sidebar.radio("Selecione uma aba:", (
     "Avaliação do Gestor", "Autoavaliação", "Resultado Consolidado"
